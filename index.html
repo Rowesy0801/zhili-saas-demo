@@ -3,190 +3,48 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>织里童装预测SaaS</title>
+    <title>织里童装爆款预测 SaaS 演示</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <div class="app-shell">
-      <aside class="sidebar" aria-label="主导航">
+      <aside class="sidebar">
         <div class="brand">
-          <div class="brand-mark" aria-hidden="true">
-            <svg viewBox="0 0 32 32" role="img">
-              <path d="M11 6h10l5 5-3 4-3-2v13H12V13l-3 2-3-4 5-5Z" />
-            </svg>
-          </div>
+          <div class="brand-mark">织</div>
           <div>
-            <strong>织里童装</strong>
-            <span>选款决策系统</span>
+            <strong id="brandTitle">供应商端 SaaS</strong>
+            <span id="brandSub">选款与内容生成工作台</span>
           </div>
         </div>
-
-        <nav class="nav-list">
-          <button class="nav-item active" data-section="home">
-            <span class="nav-icon">⌂</span>
-            预测首页
-          </button>
-          <button class="nav-item" data-section="library">
-            <span class="nav-icon">▣</span>
-            爆款款式库
-          </button>
-          <button class="nav-item" data-section="materials">
-            <span class="nav-icon">◇</span>
-            原材料建议
-          </button>
-          <button class="nav-item" data-section="detail">
-            <span class="nav-icon">▤</span>
-            商详制作
-          </button>
-          <button class="nav-item" data-section="video">
-            <span class="nav-icon">▶</span>
-            短视频制作
-          </button>
-          <button class="nav-item" data-section="custom">
-            <span class="nav-icon">✦</span>
-            AI定制
-          </button>
-          <button class="nav-item" data-section="billing">
-            <span class="nav-icon">◎</span>
-            订阅额度
-          </button>
-        </nav>
-
-        <div class="advisor">
-          <span class="advisor-icon">☎</span>
-          <div>
-            <strong>专属顾问</strong>
-            <span>联系客户成功</span>
-          </div>
+        <div class="system-switch" role="tablist" aria-label="系统切换">
+          <button class="system-tab active" data-system="supplier">用户端</button>
+          <button class="system-tab" data-system="admin">后台</button>
+        </div>
+        <nav class="nav-list" id="navList" aria-label="主导航"></nav>
+        <div class="sidebar-card">
+          <strong id="sideCardTitle">旗舰版试用中</strong>
+          <span id="sideCardText">剩余额度会随演示操作实时变化</span>
         </div>
       </aside>
 
       <main class="workspace">
         <header class="topbar">
           <div>
-            <h1>预测首页</h1>
-            <p>只呈现预测结论、判断维度与备货动作，帮助档口快速决定要不要打样上新。</p>
+            <p class="eyebrow" id="systemLabel">供应商端 SaaS</p>
+            <h1 id="pageTitle">预测首页</h1>
+            <p id="pageDesc">未来 7/14/30 天款式预测、商详图片风格生成与内容制作演示。</p>
           </div>
           <div class="top-actions">
-            <button class="icon-btn" aria-label="通知">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M18 16v-5a6 6 0 0 0-12 0v5l-2 2h16l-2-2Z" />
-                <path d="M10 21h4" />
-              </svg>
-            </button>
-            <button class="icon-btn" aria-label="帮助">
-              <svg viewBox="0 0 24 24" aria-hidden="true">
-                <path d="M9 9a3 3 0 1 1 5 2.2c-1 .6-2 1.4-2 2.8" />
-                <path d="M12 18h.01" />
-                <circle cx="12" cy="12" r="9" />
-              </svg>
-            </button>
-            <button class="account">
-              <span>织里童装供应商</span>
-              <small>切换工作台</small>
-            </button>
+            <button class="ghost-btn" id="demoReset">重置演示数据</button>
+            <button class="primary-btn" id="primaryAction">开始生成</button>
           </div>
         </header>
 
-        <section class="control-row" aria-label="筛选条件">
-          <div class="period-tabs" role="tablist" aria-label="预测周期">
-            <button class="tab active" data-period="7">未来7天</button>
-            <button class="tab" data-period="14">未来14天</button>
-            <button class="tab" data-period="30">未来30天</button>
-          </div>
-          <div class="filters">
-            <select aria-label="品类">
-              <option>全部品类</option>
-              <option>套装</option>
-              <option>外套</option>
-              <option>裙装</option>
-              <option>卫衣</option>
-            </select>
-            <select aria-label="年龄段">
-              <option>全部年龄段</option>
-              <option>3-6岁</option>
-              <option>7-10岁</option>
-              <option>11-14岁</option>
-            </select>
-            <select aria-label="面料">
-              <option>全部面料</option>
-              <option>精梳棉针织</option>
-              <option>棉氨混纺</option>
-              <option>轻薄防晒布</option>
-            </select>
-            <button class="ghost-btn" id="resetFilters">重置</button>
-          </div>
-        </section>
-
-        <section class="content-grid">
-          <div class="recommendations">
-            <div class="section-title">
-              <div>
-                <h2>预测推荐款式</h2>
-                <p>基于多维预测，只展示结论与维度，不展示底层具体数据。</p>
-              </div>
-              <span class="policy-chip">供应商端数据脱敏</span>
-            </div>
-
-            <div class="cards" id="styleCards" aria-live="polite"></div>
-
-            <section class="dimension-guide">
-              <div>
-                <h2>预测维度说明</h2>
-                <p>系统从款式、场景、内容、供应链和材料等方向进行归因，前端只保留可理解的判断维度。</p>
-              </div>
-              <div class="dimension-grid" id="dimensionGrid"></div>
-            </section>
-          </div>
-
-          <aside class="detail-panel" aria-label="款式详情">
-            <div class="detail-head">
-              <span>款式详情</span>
-              <strong id="detailLevel">强推荐</strong>
-            </div>
-            <div class="hero-card">
-              <div class="hero-thumb" id="detailVisual" aria-hidden="true"></div>
-              <div>
-                <h2 id="detailName">学院风针织开衫套装</h2>
-                <p id="detailMeta">适合年龄：3-8岁</p>
-                <p id="detailLaunch">建议上新：尽快上新</p>
-              </div>
-            </div>
-
-            <div class="detail-block">
-              <h3>预测维度解读</h3>
-              <div id="detailReasons" class="reason-list"></div>
-            </div>
-
-            <div class="detail-block">
-              <h3>原材料建议</h3>
-              <div class="material-tags" id="detailMaterials"></div>
-            </div>
-
-            <div class="detail-block">
-              <h3>备货建议</h3>
-              <div class="advice-list" id="detailAdvice"></div>
-            </div>
-
-            <div class="generate-actions">
-              <button>
-                <strong>生成WEB商详</strong>
-                <span>生成网页详情页</span>
-              </button>
-              <button>
-                <strong>生成APP商详</strong>
-                <span>生成移动详情页</span>
-              </button>
-              <button>
-                <strong>生成短视频脚本</strong>
-                <span>生成拍摄脚本</span>
-              </button>
-            </div>
-          </aside>
-        </section>
+        <section id="pageRoot" class="page-root" aria-live="polite"></section>
       </main>
     </div>
 
+    <div class="toast" id="toast" role="status"></div>
     <script src="./script.js"></script>
   </body>
 </html>
