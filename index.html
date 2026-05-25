@@ -3,40 +3,45 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>织里童装爆款预测 SaaS 演示</title>
+    <title>智衣预测 SaaS 演示</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
     <div class="app-shell">
       <aside class="sidebar">
         <div class="brand">
-          <div class="brand-mark">织</div>
+          <div class="brand-mark" aria-hidden="true">智</div>
           <div>
-            <strong id="brandTitle">供应商端 SaaS</strong>
-            <span id="brandSub">选款与内容生成工作台</span>
+            <strong id="brandTitle">供应商端</strong>
+            <span id="brandSub">预测与内容生成工作台</span>
           </div>
         </div>
+
         <div class="system-switch" role="tablist" aria-label="系统切换">
-          <button class="system-tab active" data-system="supplier">用户端</button>
-          <button class="system-tab" data-system="admin">后台</button>
+          <button class="system-tab active" type="button" data-system="supplier">用户端</button>
+          <button class="system-tab" type="button" data-system="admin">后台</button>
         </div>
+
         <nav class="nav-list" id="navList" aria-label="主导航"></nav>
-        <div class="sidebar-card">
-          <strong id="sideCardTitle">旗舰版试用中</strong>
-          <span id="sideCardText">剩余额度会随演示操作实时变化</span>
+
+        <div class="sidebar-card" id="sideCard">
+          <span class="side-label" id="sideCardTitle">当前积分</span>
+          <strong id="sideCardValue">12,860</strong>
+          <span id="sideCardText">生成前会展示预计消耗</span>
+          <button class="sidebar-btn" type="button" data-action="go-billing">充值</button>
         </div>
       </aside>
 
       <main class="workspace">
         <header class="topbar">
           <div>
-            <p class="eyebrow" id="systemLabel">供应商端 SaaS</p>
+            <p class="system-label" id="systemLabel">供应商端 SaaS</p>
             <h1 id="pageTitle">预测首页</h1>
-            <p id="pageDesc">未来 7/14/30 天款式预测、商详图片风格生成与内容制作演示。</p>
+            <p id="pageDesc">查看未来 7/14/30 天可能起量的款式，并进入商详套图与短视频生成。</p>
           </div>
           <div class="top-actions">
-            <button class="ghost-btn" id="demoReset">重置演示数据</button>
-            <button class="primary-btn" id="primaryAction">开始生成</button>
+            <button class="ghost-btn" id="demoReset" type="button">重置演示数据</button>
+            <button class="primary-btn" id="primaryAction" type="button">开始生成</button>
           </div>
         </header>
 
